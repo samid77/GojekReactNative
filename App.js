@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
+import React, {Fragment, Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -27,6 +27,9 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import GoPayFeature from './src/components/molecules/GoPayFeature';
+import MainFeature from './src/components/molecules/MainFeature';
 
 const App = () => {
   return(
@@ -49,79 +52,23 @@ const App = () => {
             <Text style={styles.gopayAmount}>Rp 50,576</Text>
           </View>
           <View style={styles.gopayMenu}>
-            <View style={styles.gopaySubMenu}>
-              <Image source={require('./src/assets/icon/pay.png')}/>
-              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginTop: 15}}>Pay</Text>
-            </View>
-            <View style={styles.gopaySubMenu}>
-              <Image source={require('./src/assets/icon/nearby.png')}/>
-              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginTop: 15}}>Nearby</Text>
-            </View>
-            <View style={styles.gopaySubMenu}>
-              <Image source={require('./src/assets/icon/topup.png')}/>
-              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginTop: 15}}>Top Up</Text>
-            </View>
-            <View style={styles.gopaySubMenu}>
-              <Image source={require('./src/assets/icon/more.png')}/>
-              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginTop: 15}}>More</Text>
-            </View>
+            <GoPayFeature title="Pay" img={require('./src/assets/icon/pay.png')}/>
+            <GoPayFeature title="Nearby" img={require('./src/assets/icon/nearby.png')}/>
+            <GoPayFeature title="Top Up" img={require('./src/assets/icon/topup.png')}/>
+            <GoPayFeature title="More" img={require('./src/assets/icon/more.png')}/>
           </View>
         </View>
 
         <View style={styles.cardMenuSection}>
           <View style={styles.firstRowMenu}>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-ride.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>GO-RIDE</Text>
-            </View>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-car.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>G0-CAR</Text>
-            </View>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-bluebird.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>GO-BLUEBIRD</Text>
-            </View>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-pulsa.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>GO-PULSA</Text>
-            </View>
-          </View>
-          <View style={styles.secondRowMenu}>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-send.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>GO-SEND</Text>
-            </View>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-deals.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>
-                GO-DEALS
-              </Text>
-            </View>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-food.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>GO-FOOD</Text>
-            </View>
-            <View style={{width: '25%', alignItems: 'center'}}>
-              <View style={styles.cardMenu}>
-                <Image style={styles.cardMenuIcon} source={require('./src/assets/icon/go-more.png')}/>
-              </View>
-              <Text style={styles.cardMenuTitle}>MORE</Text>
-            </View>
+            <MainFeature title="GO-RIDE" img={require('./src/assets/icon/go-ride.png')}/>
+            <MainFeature title="GO-CAR" img={require('./src/assets/icon/go-car.png')}/>
+            <MainFeature title="GO-BLUEBIRD" img={require('./src/assets/icon/go-bluebird.png')}/>
+            <MainFeature title="GO-SEND" img={require('./src/assets/icon/go-send.png')}/>
+            <MainFeature title="GO-DEALS" img={require('./src/assets/icon/go-deals.png')}/>
+            <MainFeature title="GO-PULSA" img={require('./src/assets/icon/go-pulsa.png')}/>
+            <MainFeature title="GO-FOOD" img={require('./src/assets/icon/go-food.png')}/>
+            <MainFeature title="MORE" img={require('./src/assets/icon/more.png')}/>
           </View>
         </View>
 
@@ -321,46 +268,19 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4
   },
-  gopaySubMenu: {
-    flex:1,
-    alignItems: 'center',
-  },
   cardMenuSection: {
     top: 90,
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 18,
   },
-  cardMenu: {
-    width: 58,
-    height: 58,
-    borderWidth:1,
-    borderColor: '#EFEFEF',
-    borderRadius: 18,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   firstRowMenu: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
     marginBottom: 18,
+    flexWrap: 'wrap',
   },
-  secondRowMenu: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginBottom: 18,
-  },
-  cardMenuTitle: {
-    fontSize: 11,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 6,
-    color: '#1C1C1C'
-  },
-  cardMenuIcon: {},
-
   newsSection: {
     height: 19,
     backgroundColor: '#F2F2F4',
