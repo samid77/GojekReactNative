@@ -30,21 +30,15 @@ import {
 
 import GoPayFeature from './src/components/molecules/GoPayFeature';
 import MainFeature from './src/components/molecules/MainFeature';
+import SearchFeature from './src/components/molecules/SearchFeature';
+import GoNewsFeature from './src/components/molecules/GoNewsFeature';
 
 const App = () => {
   return(
     <View style={styles.container}>
       <ScrollView style={styles.container1}>
-        
-        <View style={styles.searchSection}>
-          <View style={{position: 'relative', flex: 1}}>
-            <TextInput placeholder='What do you want to eat?' style={styles.inputSearch}/>
-            <Image style={styles.iconSearch} source={require('./src/assets/icon/search.png')}/>
-          </View>
-          <View style={styles.promo}>
-            <Image source={require('./src/assets/icon/promo.png')}/>
-          </View>
-        </View>
+
+        <SearchFeature searchimg={require('./src/assets/icon/search.png')} promoimg={require('./src/assets/icon/promo.png')}/>
 
         <View style={styles.gopaySection}>
           <View style={styles.gopayBalance}>
@@ -72,25 +66,7 @@ const App = () => {
           </View>
         </View>
 
-        <View style={styles.newsSection}>
-          <View style={{paddingTop: 16, paddingHorizontal: 16}}>
-
-            <View style={styles.newsBanner}>
-              <Image style={styles.newsBannerImage} source={require('./src/assets/dummy/demo-mahasiswa.jpg')}/>
-              <View style={styles.newsBannerLogoView}>
-                <Image style={styles.newsBannerLogo} source={require('./src/assets/logo/white.png')}/>
-              </View>
-            </View>
-            <View style={styles.newsDescription}>
-              <Text style={{fontSize: 16, fontWeight: 'bold', color: '#1C1C1C'}}>GO-NEWS</Text>
-              <Text style={{fontSize: 14, fontWeight: '500', color: '#1C1C1C', marginBottom: 13}}>Ribuan mahasiswa demo tolak RUU KUHP di depan gedung DPR.</Text>
-              <TouchableOpacity style={styles.newsButton}>
-                <Text style={styles.newsButtonText}>READ</Text>
-              </TouchableOpacity>
-            </View>
-
-          </View>
-        </View>
+        <GoNewsFeature newsbannerimg={require('./src/assets/dummy/demo-mahasiswa.jpg')} newsbannerlogoimg={require('./src/assets/logo/white.png')} newsDescription="Ribuan mahasiswa demo tolak RUU KUHP di depan gedung DPR."/>
 
         <View style={styles.goFoodSection}>
           <View style={styles.goFoodWrapper}>
@@ -215,32 +191,6 @@ const styles = StyleSheet.create({
     color: '#545454',
     marginTop: 4
   },
-  searchSection: {
-    top: 60,
-    marginHorizontal: 17,
-    flexDirection: 'row'
-  },
-  inputSearch: {
-    borderWidth: 1,
-    borderColor: '#E8E8E8',
-    borderRadius: 25,
-    height: 40,
-    fontSize: 13,
-    paddingLeft: 45,
-    paddingRight: 20,
-    marginRight: 18,
-    backgroundColor: 'white',
-  },
-  iconSearch: {
-    position: 'absolute',
-    top: 5,
-    left: 12
-  },
-  promo: {
-    width: 35,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   gopaySection: {
     top: 70,
     marginHorizontal: 17,
@@ -280,52 +230,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 18,
     flexWrap: 'wrap',
-  },
-  newsSection: {
-    height: 19,
-    backgroundColor: '#F2F2F4',
-    top: 90,
-  },
-  newsBanner: {
-    position: 'relative',
-  },
-  newsBannerImage: {
-    height: 170,
-    marginTop: 15,
-    width: '100%',
-    borderRadius: 6,
-  },
-  newsBannerLogoView: {
-    height: 15,
-    width: 60,
-    position: 'absolute',
-    top: 26,
-    left: 11,
-  },
-  newsBannerLogo: {
-    width: undefined,
-    height: undefined,
-    resizeMode: 'contain',
-    flex: 1,
-  },
-  newsDescription: {
-    paddingTop: 16,
-    paddingBottom: 20,
-    borderBottomColor: '#E8E9ED',
-    borderBottomWidth: 1,
-  },
-  newsButton: {
-    backgroundColor: '#61A756',
-    paddingHorizontal: 12,
-    paddingVertical: 11,
-    alignSelf: 'flex-end',
-    borderRadius: 5,
-  },
-  newsButtonText: {
-    fontSize: 13,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   goFoodSection: {
     marginTop: 400,
