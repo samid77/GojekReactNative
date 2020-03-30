@@ -16,7 +16,7 @@ const GoFoodBannerFeature = (props) => {
               </View>
               <View style={{flex: 1, paddingLeft: 12}}>
                 <TouchableOpacity style={styles.goFoodButton}>
-                  <Text style={styles.goFoodButtonText}>GET VOUCHER</Text>
+                  <Text style={styles.goFoodButtonText}>GET VOUCHERS</Text>
                 </TouchableOpacity>
               </View>
             </View>
